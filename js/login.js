@@ -16,7 +16,7 @@ loginBtn_2.addEventListener('click', function (c) {
             setTimeout(() => {
                 console.log("hello")
                 alert("عااااش يا يونس")
-                window.location = "home.html"
+                window.location = "index.html"
             }, 1500)
         } else {
             console.log("username or password is incorrect ")
