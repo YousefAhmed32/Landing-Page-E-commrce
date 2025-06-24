@@ -1,0 +1,430 @@
+let allproduct = document.querySelector(".products");
+let allproduct2 = document.querySelector(".draw2");
+let allproduct3 = document.querySelector(".draw3");
+const allproductotal = [allproduct, allproduct2, allproduct3]
+let swiper_wrapper = document.querySelector(".swiper_wrapper")
+let products = [
+  { id: 1, title: "Hody Cvoms", imgurl: "img/Designer (8).jpeg", color: "grey", price: 549, category: "clothes" },
+  { id: 2, title: "TMalo 24nd Cvoms", imgurl: "img/Designer (4).jpeg", color: "grey", price: 899, category: "clothes" },
+  { id: 3, title: "TMalo 24nd Cvoms", imgurl: "img/Designer (14).jpeg", color: "grey", price: 499, category: "shoes" },
+  { id: 4, title: "Fghd ou11 Hop", imgurl: "img/Designer (20).jpeg", color: "grey", price: 1399, category: "accessories" },
+  { id: 5, title: "Soeiur 13p dsmKs", imgurl: "img/Designer (5).jpeg", color: "grey", price: 1599, category: "sport" },
+  { id: 6, title: "pbad 56tm fnim", imgurl: "img/Designer (6).jpeg", color: "grey", price: 1199, category: "shoes" },
+  { id: 7, title: "SSH23SAER19713TM1 - Blue", imgurl: "img/Designer RM1.png", color: "black", price: 1200, category: "accessories" },
+  { id: 8, title: "SCJ250 - Black", imgurl: "img/gens (2).png", color: "black", price: 1200, category: "gens" },
+  { id: 9, title: "SSH160 - Black", imgurl: "img/gens (3).png", color: "black", price: 1200, category: "gens" },
+  { id: 10, title: "WEK168 - black", imgurl: "img/gens (4).png", color: "black", price: 1200, category: "gens" },
+  { id: 11, title: "MST146 - Black", imgurl: "img/gens (1).png", color: "black", price: 1200, category: "gens" },
+  { id: 12, title: "POD56 - white", imgurl: "img/shose (2).png", color: "black", price: 1200, category: "gens" },
+  { id: 13, title: "MS96 - white", imgurl: "img/shose (4).png", color: "black", price: 1200, category: "gens" },
+  { id: 14, title: "ASD56 - Black", imgurl: "img/shose (3).png", color: "black", price: 1200, category: "gens" },
+  { id: 15, title: "BAD43 - white", imgurl: "img/shose (1).png", color: "black", price: 1200, category: "gens" },
+];
+
+const categorySelect = document.getElementById("categorySelect");
+const searchInput = document.getElementById("searchInput");
+
+function drawItems(filteredProducts = products) {
+  let displayedProducts = filteredProducts.slice(0, 8);
+  allproduct.innerHTML = displayedProducts.map(item => `
+      <div id="product_${item.id}" class="product_item  col-xxl-4 col-lg-3 col-md-4 col-sm-6">
+          <div class="item-top position-relative">
+       <i class="fa-regular fa-heart   heartblue"  id="iconheartclick_${item.id}" onClick="addToFavorite(${item.id})"></i>
+
+          <img src="${item.imgurl}" alt="" class="object-fit-cover img_item">
+            <div class="sizes">
+               
+                
+               <div id="size-container">
+                   <button class="size-btn" data-size="S">S</button>
+                   <button class="size-btn" data-size="M">M</button>
+                   <button class="size-btn" data-size="L">L</button>
+                   <button class="size-btn" data-size="XL">XL</button>
+                   <button class="size-btn" data-size="XXL">XXL</button>
+              <button onClick="addToCart(${item.id})"  class="d-block btn btn-dark w-100 rounded-0" style="margin: 10px auto;">Add to Cart</button>
+
+               </div>
+
+               <!-- <hr> -->
+            </div>   
+          </div>
+          <div class="container-fluid item_des">
+              <h4 class="p-0">${item.title}</h4>
+              <p class="m-1 fw-bolder">Price: <a>${item.price}</a>$</p>
+              
+            
+          </div>
+      </div>`).join('');
+}
+
+
+
+
+
+function draw2() {
+  let displayedProducts2 = products.slice(7, 11);
+  allproduct2.innerHTML = displayedProducts2.map(item => `
+                 <div id="product_${item.id}" class="product_item  col-xxl-4 col-lg-3 col-md-4 col-sm-6">
+    <div class="item-top position-relative">
+      <i class="fa-regular fa-heart   heartblue" id="iconheartclick_${item.id}" onClick="addToFavorite(${item.id})"></i>
+
+      <img src="${item.imgurl}" alt="" class="object-fit-cover img_item">
+      <div class="sizes">
+
+
+        <div id="size-container">
+          <button class="size-btn" data-size="S">S</button>
+          <button class="size-btn" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+          <button class="size-btn" data-size="XXL">XXL</button>
+          <button onClick="addToCart(${item.id})" class="d-block btn btn-dark w-100 rounded-0"
+            style="margin: 10px auto;">Add to Cart</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid item_des">
+      <h4 class="p-0">${item.title}</h4>
+      <p class="m-1 fw-bolder">Price: <a>${item.price}</a>$</p>
+
+
+    </div>
+  </div>`).join('');
+}
+
+draw2()
+
+
+function draw3() {
+  let displayedProducts3 = products.slice(11, 15);
+  allproduct3.innerHTML = displayedProducts3.map(item => `
+                 <div id="product_${item.id}" class="product_item  col-xxl-4 col-lg-3 col-md-4 col-sm-6">
+    <div class="item-top position-relative">
+      <i class="fa-regular fa-heart   heartblue" id="iconheartclick_${item.id}" onClick="addToFavorite(${item.id})"></i>
+
+      <img src="${item.imgurl}" alt="" class="object-fit-cover img_item">
+      <div class="sizes">
+
+
+        <div id="size-container">
+         <button class="size-btn" data-size="S">25</button>
+          <button class="size-btn" data-size="M">27</button>
+          <button class="size-btn" data-size="L">29</button>
+          <button class="size-btn" data-size="XL">30</button>
+          <button class="size-btn" data-size="XXL">32</button>
+          <button onClick="addToCart(${item.id})" class="d-block btn btn-dark w-100 rounded-0"
+            style="margin: 10px auto;">Add to Cart</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid item_des">
+      <h4 class="p-0">${item.title}</h4>
+      <p class="m-1 fw-bolder">Price: <a>${item.price}</a>$</p>
+
+
+    </div>
+  </div>`).join('');
+}
+
+draw3()
+
+
+
+function draw() {
+  swiper_wrapper.innerHTML = products.map((item) => `
+        <div  class="swiper-slide ">
+        
+              <div id="product_${item.id}" class="product_item  col-xxl-4 col-lg-3 col-md-4 col-sm-6">
+          <div class="item-top position-relative">
+       <i class="fa-regular fa-heart   heartblue"  id="iconheartclick_${item.id}" onClick="addToFavorite(${item.id})"></i>
+
+          <img src="${item.imgurl}" alt="" class="object-fit-cover img_item">
+            <div class="sizes">
+               
+                
+               <div id="size-container">
+                   <button class="size-btn" data-size="S">S</button>
+                   <button class="size-btn" data-size="M">M</button>
+                   <button class="size-btn" data-size="L">L</button>
+                   <button class="size-btn" data-size="XL">XL</button>
+                   <button class="size-btn" data-size="XXL">XXL</button>
+              <button onClick="addToCart(${item.id})"  class="d-block btn btn-dark w-100 rounded-0" style="margin: 10px auto;">Add to Cart</button>
+
+               </div>
+
+               <!-- <hr> -->
+            </div>   
+          </div>
+          <div class="container-fluid item_des">
+              <h4 class="p-0">${item.title}</h4>
+              <p class="m-1 fw-bolder">Price: <a>${item.price}</a>$</p>
+              
+            
+          </div>
+      </div>
+
+
+
+        </div>   
+        `
+
+  )
+}
+
+
+
+function filterProducts() {
+  const selectedCategory = categorySelect.value.toLowerCase();
+  const searchText = searchInput.value.toLowerCase();
+
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+    const matchesSearch = product.title.toLowerCase().includes(searchText);
+    return matchesCategory && matchesSearch;
+  });
+
+  drawItems(filteredProducts);
+}
+
+categorySelect.addEventListener("change", filterProducts);
+searchInput.addEventListener("input", filterProducts);
+
+drawItems();
+
+//*******************************                check  Herat color   ******************************** */
+document.addEventListener("DOMContentLoaded", () => {
+  const allproductotal = [
+    document.querySelector(".products"),
+    document.querySelector(".draw2"),
+    document.querySelector(".draw3")
+  ];
+  allproductotal.forEach((allproductT) => {
+    allproductT.addEventListener("click", (checkColorFavourite) => {
+      if (checkColorFavourite.target.closest(".fa-heart")) {
+        let btnHeart = checkColorFavourite.target.closest(".fa-heart");
+        const productId = btnHeart.id.split("_")[1];
+
+
+        btnHeart.classList.toggle("heartred");
+
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || {};
+
+        if (btnHeart.classList.contains("heartred")) {
+          favorites[productId] = true;
+        } else {
+          delete favorites[productId];
+        }
+
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+      }
+    });
+  });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || {};
+
+  Object.keys(favorites).forEach((productId) => {
+    let btnHeart = document.querySelector(`#iconheartclick_${productId}`);
+    if (btnHeart) {
+      btnHeart.classList.add("heartred");
+    }
+  });
+});
+
+//*******************************             AddTo Favourite       ******************************** */
+
+
+function addToFavorite(id) {
+  const productElement = document.querySelector(`#product_${id}`);
+
+  let choosenItemFF = products.find((item) => item.id === id);
+
+
+  let FavoriteProductADD = JSON.parse(localStorage.getItem("FavoriteADD")) || [];
+
+  let existingItemFF = FavoriteProductADD.find((item) => item.id === id);
+  if (existingItemFF) {
+    alert("This product is already in your favorite list.");
+  } else {
+
+
+    FavoriteProductADD.push({ ...choosenItemFF });
+    localStorage.setItem("FavoriteADD", JSON.stringify(FavoriteProductADD));
+
+    renderADDItems();
+    alert("Success! Product added to favorites.");
+
+  }
+
+}
+let favouritePPP = document.getElementById("favouritePP")
+function renderADDItems() {
+  favouritePPP.innerHTML = "";
+  let FavoriteProductADD = JSON.parse(localStorage.getItem("FavoriteADD")) || [];
+
+  FavoriteProductADD.forEach((pro) => {
+    favouritePPP.innerHTML += `
+      <div id="favouriteSS">
+        <img src="${pro.imgurl}" alt="" style="width: 90%; height: 90%;">
+        <button class="delete_favourite" data-id="${pro.id}">Delete</button>
+      </div>
+    `;
+  });
+}
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete_favourite")) {
+    const productId = event.target.dataset.id;
+    deleteFromFavorite(productId);
+  }
+});
+
+function deleteFromFavorite(id) {
+  let FavoriteProductADD = JSON.parse(localStorage.getItem("FavoriteADD")) || [];
+  FavoriteProductADD = FavoriteProductADD.filter((item) => item.id !== parseInt(id));
+  localStorage.setItem("FavoriteADD", JSON.stringify(FavoriteProductADD));
+  renderADDItems();
+}
+
+let cart_productDiv = document.querySelector(".Write");
+
+// Add------------------------------------------------
+
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("size-btn")) {
+    const sizeButtons = event.target.parentNode.querySelectorAll(".size-btn ");
+    sizeButtons.forEach((btn) => btn.classList.remove("active"));
+    event.target.classList.add("active");
+  }
+});
+
+function addToCart(id) {
+  const productElement = document.querySelector(`#product_${id}`);
+  const selectedSizeBtn = productElement.querySelector(".size-btn.active");
+
+  if (!selectedSizeBtn) {
+    alert("Please select a size before adding to cart.");
+    return;
+  }
+
+  const selectedSize = selectedSizeBtn.dataset.size;
+
+  let choosenItem = products.find((item) => item.id === id);
+
+
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+
+  let existingItem = cartItems.find((item) => item.id === id && item.size === selectedSize);
+  if (existingItem) {
+
+    existingItem.quantity += 1;
+  } else {
+    cartItems.push({ ...choosenItem, size: selectedSize, quantity: 1 });
+  }
+
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+
+  renderCartItems();
+}
+
+
+function renderCartItems() {
+  cart_productDiv.innerHTML = "";
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  cartItems.forEach((pro) => {
+    cart_productDiv.innerHTML += `
+            <div class="line mt-3 mb-2"></div>
+            <div class="sides" id="cart_item_${pro.id}">
+                <div class="side1">
+                    <img src="${pro.imgurl}" alt="" style="width: 150px; height: 250px;">
+                </div>
+                <div class="side2 ms-4">
+                    <p class="mt-5">${pro.title}</p>
+                    <div class="d-inline-block counter-items border-blackborder-1">
+                        <button class="decrease decreasecss  border-0" data-id="${pro.id}">-</button>
+                        <div id="countert_${pro.id}" style="width: 40px;" class="border-0 d-inline countert">${pro.quantity}</div>
+                        <button class="increasement z-3  increasmentcss  border-0" data-id="${pro.id}">+</button>
+                    </div>
+
+
+
+                
+                    <br>
+                    <span>Price:
+                     <span class="item_price" id="item_price_${pro.id}">${pro.price * pro.quantity}</span>$</span>
+                    <span>size:${pro.size} </span>
+                </div>
+            </div>`;
+  });
+
+  updateCartTotal();
+}
+
+function updateQuantity(id, updataCount) {
+  const counter = document.getElementById(`countert_${id}`);
+  const itemPrice = document.getElementById(`item_price_${id}`);
+  const product = products.find((item) => item.id === id);
+
+  let currentCount = parseInt(counter.textContent);
+  let newCount = currentCount + updataCount;
+
+  if (newCount < 1) return;
+
+  counter.textContent = newCount;
+
+  const totalPrice = newCount * product.price;
+  itemPrice.textContent = totalPrice.toFixed(2);
+
+  updateCartTotal();
+}
+
+function updateCartTotal() {
+  const allItemPrices = document.querySelectorAll(".item_price");
+  let totalCartPrice = 0;
+
+  allItemPrices.forEach((priceElem) => {
+    totalCartPrice += parseFloat(priceElem.textContent);
+  });
+
+  document.getElementById("Total_price").innerText = totalCartPrice.toFixed(2);
+}
+
+cart_productDiv.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.classList.contains("decrease")) {
+    const id = parseInt(target.dataset.id);
+    updateQuantity(id, -1);
+  } else if (target.classList.contains("increasement")) {
+    const id = parseInt(target.dataset.id);
+    updateQuantity(id, 1);
+  }
+});
+
+
+
+let shoppingCartIcon = document.querySelector(".cart")
+let cartsProducts = document.querySelector(".cart_product")
+shoppingCartIcon.addEventListener("click", opencart)
+
+function opencart() {
+  if (cart_productDiv.innerHTML != "") {
+    console.log("عاش يا يونس 2")
+    if (cartsProducts.style.display == "block") {
+      cartsProducts.style.display = "none"
+    } else {
+      cartsProducts.style.display = "block"
+    }
+  }
+}
+
+renderCartItems()
