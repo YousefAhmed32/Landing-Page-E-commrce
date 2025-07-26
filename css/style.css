@@ -729,7 +729,7 @@ input:focus ~ .line-under {
   align-items: center;
   font-size: 24px;
   color: #fff;
-  background-image: url(../img/background_clothes_1\\(1\).png);
+  background-image: url(../img/background_clothes_1\ \(1\).png);
 }
 .swiper-slide_2 {
   background-image: url(../img/background_clothes_2.png);
@@ -797,4 +797,50 @@ input:focus ~ .line-under {
 .draw2,
 .draw3 {
   width: 100%;
+}
+ header{
+  /* color: white; */
+  background-color: rgba(0, 0, 0, 0.915);
+ }
+ .navbar-brand{
+  color: white;
+  
+ }
+ .nav-link
+{
+  color: white;
+
+}
+.active{
+color: white !important;
+}
+.liuser {
+  list-style: none;
+  background: #000;
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.liuser a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
+}
+
+.liuser:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.liuser:active {
+  background: #222;
+}
+
+.toLogin:hover {
+  background-color: #353535 !important;
+  margin-top: -5px;
+  transition: .5s;
 }
